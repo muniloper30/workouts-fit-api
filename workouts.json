@@ -1,0 +1,164 @@
+{
+  "workouts": [
+    {
+      "id": 1,
+      "name": "Fran",
+      "type": "CrossFit Benchmark",
+      "description": "21-15-9 de thrusters (95/65 lbs) y pull-ups",
+      "duration": "5-10 min",
+      "difficulty": "Avanzado"
+    },
+    {
+      "id": 2,
+      "name": "Murph",
+      "type": "Hero WOD",
+      "description": "1 milla corriendo, 100 pull-ups, 200 push-ups, 300 air squats, 1 milla corriendo (con chaleco de 20/14 lbs opcional)",
+      "duration": "40-60 min",
+      "difficulty": "Avanzado"
+    },
+    {
+      "id": 3,
+      "name": "Cindy",
+      "type": "CrossFit Benchmark",
+      "description": "AMRAP 20 minutos: 5 pull-ups, 10 push-ups, 15 air squats",
+      "duration": "20 min",
+      "difficulty": "Intermedio"
+    },
+    {
+      "id": 4,
+      "name": "Barbara",
+      "type": "CrossFit Benchmark",
+      "description": "5 rondas con 3 minutos de descanso: 20 pull-ups, 30 push-ups, 40 sit-ups, 50 squats",
+      "duration": "30-40 min",
+      "difficulty": "Avanzado"
+    },
+    {
+      "id": 5,
+      "name": "Chelsea",
+      "type": "CrossFit Benchmark",
+      "description": "EMOM 30 minutos: 5 pull-ups, 10 push-ups, 15 squats",
+      "duration": "30 min",
+      "difficulty": "Intermedio"
+    },
+    {
+      "id": 6,
+      "name": "Mary",
+      "type": "CrossFit Benchmark",
+      "description": "AMRAP 20 minutos: 5 handstand push-ups, 10 pistol squats, 15 pull-ups",
+      "duration": "20 min",
+      "difficulty": "Avanzado"
+    },
+    {
+      "id": 7,
+      "name": "Tabata Bodyweight",
+      "type": "Entrenamiento Funcional",
+      "description": "8 rondas de 20 segundos de trabajo y 10 segundos de descanso de squats, push-ups, sit-ups y burpees",
+      "duration": "16 min",
+      "difficulty": "Principiante"
+    },
+    {
+      "id": 8,
+      "name": "EMOM Kettlebell",
+      "type": "Entrenamiento Funcional",
+      "description": "Cada minuto durante 12 min: 10 kettlebell swings, 10 goblet squats, 10 push-ups",
+      "duration": "12 min",
+      "difficulty": "Intermedio"
+    },
+    {
+      "id": 9,
+      "name": "Full Body Circuit",
+      "type": "Entrenamiento Funcional",
+      "description": "3 rondas de: 15 burpees, 20 kettlebell swings, 25 box jumps, 30 sit-ups",
+      "duration": "25-30 min",
+      "difficulty": "Intermedio"
+    },
+    {
+      "id": 10,
+      "name": "Leg Burner",
+      "type": "Entrenamiento Funcional",
+      "description": "4 rondas de: 20 lunges, 20 air squats, 20 jumping squats",
+      "duration": "20 min",
+      "difficulty": "Intermedio"
+    },
+    {
+      "id": 11,
+      "name": "Upper Body Blast",
+      "type": "Entrenamiento Funcional",
+      "description": "AMRAP 15 minutos: 10 push-ups, 10 pull-ups, 10 dips",
+      "duration": "15 min",
+      "difficulty": "Intermedio"
+    },
+    {
+      "id": 12,
+      "name": "Core Crusher",
+      "type": "Entrenamiento Funcional",
+      "description": "3 rondas de: 20 sit-ups, 20 leg raises, 1 min plank",
+      "duration": "15-20 min",
+      "difficulty": "Principiante"
+    },
+    {
+      "id": 13,
+      "name": "Cardio Blast",
+      "type": "Entrenamiento Funcional",
+      "description": "5 rondas de: 400m carrera, 20 burpees",
+      "duration": "20-25 min",
+      "difficulty": "Intermedio"
+    },
+    {
+      "id": 14,
+      "name": "Strength and Conditioning",
+      "type": "Entrenamiento Funcional",
+      "description": "4 rondas de: 10 deadlifts, 15 push presses, 20 box jumps",
+      "duration": "30 min",
+      "difficulty": "Avanzado"
+    },
+    {
+      "id": 15,
+      "name": "Endurance Challenge",
+      "type": "Entrenamiento Funcional",
+      "description": "AMRAP 30 minutos: 500m remo, 20 kettlebell swings, 15 pull-ups",
+      "duration": "30 min",
+      "difficulty": "Avanzado"
+    },
+    {
+      "id": 16,
+      "name": "Annie",
+      "type": "CrossFit Benchmark",
+      "description": "50-40-30-20-10 repeticiones de: double-unders y sit-ups",
+      "duration": "10-15 min",
+      "difficulty": "Intermedio"
+    },
+    {
+      "id": 17,
+      "name": "Nicole",
+      "type": "CrossFit Benchmark",
+      "description": "AMRAP 20 minutos: 400m carrera, máximas repeticiones de pull-ups",
+      "duration": "20 min",
+      "difficulty": "Intermedio"
+    },
+    {
+      "id": 18,
+      "name": "Jackie",
+      "type": "CrossFit Benchmark",
+      "description": "Por tiempo: 1000m remo, 50 thrusters (45 lbs), 30 pull-ups",
+      "duration": "15-20 min",
+      "difficulty": "Intermedio"
+    },
+    {
+      "id": 19,
+      "name": "Amanda",
+      "type": "CrossFit Benchmark",
+      "description": "9-7-5 repeticiones de: muscle-ups y snatches (135/95 lbs)",
+      "duration": "10-15 min",
+      "difficulty": "Avanzado"
+    },
+    {
+      "id": 20,
+      "name": "Helen",
+      "type": "CrossFit Benchmark",
+      "description": "3 rondas de: 400m carrera, 21 kettlebell swings, 12 pull-ups",
+      "duration": "15-20 min",
+      "difficulty": "Intermedio"
+    }
+  ]
+}
