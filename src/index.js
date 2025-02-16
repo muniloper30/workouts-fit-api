@@ -14,7 +14,7 @@ const PORT =  process.env.PORT || 3000; // Se define el puerto propio o el 3000 
 
 
 const corsOptions = {
-  origin: ['http://127.0.0.1:5500', 'http://localhost:3000/api/workouts'],
+  origin: ['http://127.0.0.1:5500', 'http://localhost:3000/api/workouts', 'http://localhost:3000/api/workouts/:id'],  //Origenes permitidos
   optionsSuccessStatus: 200
 }
 app.use(cors(corsOptions));
