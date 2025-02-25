@@ -1,75 +1,92 @@
-import { pool } from "../db.js";
+import sql from "../db.js";  // Importamos la conexión a la base de datos
 
 export const getAllWorkouts = async (req, res) => {
-  //Funcion para obtener todos los workouts
-  const [rows] = await pool.query("SELECT * FROM workout");
-  res.send(rows);
+  // Función para obtener todos los workouts
+  try {
+    const workouts = await sql`SELECT * FROM workout`;  // Realizamos la consulta usando el objeto sql
+    res.send(workouts);  // Enviamos la respuesta con todos los workouts
+  } catch (error) {
+    res.status(500).send({ message: error.message });  // Si hay un error, respondemos con un mensaje
+  }
 };
 
 export const getWorkoutById = async (req, res) => {
-  //Función para obtener un workout por su id
+  // Función para obtener un workout por su id
+  const { id } = req.params; // Extraemos el id de los parámetros
 
-  const { id } = req.params; //Extraemos el id de los parametros
-  const [rows] = await pool.query("SELECT * FROM workout WHERE id = ?", [id]); //Hacemos la consulta a la base de datos
+  try {
+    const workouts = await sql`SELECT * FROM workout WHERE id = ${id}`;  // Consultamos la base de datos con la sintaxis de postgres
 
-  if (rows.length === 0) {
-    //Si no se encuentra el workout
-    res.status(404).send({ message: "Workout not found" }); //Enviamos un mensaje de error
-    return;
+    if (workouts.length === 0) {
+      // Si no se encuentra el workout
+      return res.status(404).send({ message: "Workout not found" });
+    }
+
+    res.send(workouts[0]);  // Enviamos el primer resultado (el workout encontrado)
+  } catch (error) {
+    res.status(500).send({ message: error.message });  // Si hay un error, respondemos con un mensaje
   }
-
-  res.send(rows[0]); //Enviamos la respuesta
 };
 
 export const createWorkout = async (req, res) => {
-  //Funcion para crear un workout
+  // Función para crear un workout
+  const { name, type, description, duration, difficulty } = req.body; // Extraemos los datos del body
 
-  const { name, type, description, duration, difficulty } = req.body; //Extraemos los datos del body
-  const [rows] = await pool.query(
-    "INSERT INTO workout (name, type, description, duration, difficulty) VALUES (?, ?, ?, ?, ?)",
-    [name, description, type, duration, difficulty]
-  );
+  try {
+    const [newWorkout] = await sql`INSERT INTO workout (name, type, description, duration, difficulty) 
+                                   VALUES (${name}, ${type}, ${description}, ${duration}, ${difficulty}) 
+                                   RETURNING id`;  // Realizamos la inserción y obtenemos el nuevo workout con el ID
 
-  res.send({
-    id: rows.insertId,
-    name,
-    type,
-    description,
-    duration,
-    difficulty,
-  }); //Lo colocamos entre llaves para que lo envie como un objeto json
+    // Construimos el objeto con los datos del nuevo workout
+    const createdWorkout = {
+      id: newWorkout.id,
+      name,
+      type,
+      description,
+      duration,
+      difficulty,
+    };
+
+    res.status(201).send(createdWorkout);  // Enviamos el workout creado con el id
+  } catch (error) {
+    res.status(500).send({ message: error.message });  // Si hay un error, respondemos con un mensaje
+  }
 };
 
 export const updateWorkout = async (req, res) => {
-  //Funcion para actualizar un workout
+  // Función para actualizar un workout
+  const { id } = req.params; // Extraemos el id de los parámetros
+  const { name, type, description, duration, difficulty } = req.body; // Extraemos los datos del body
 
-  const { id } = req.params; //Extraemos el id de los parametros
-  const { name, type, description, duration, difficulty } = req.body; //Extraemos los datos del body
+  try {
+    const result = await sql`UPDATE workout SET name = ${name}, type = ${type}, description = ${description}, 
+                            duration = ${duration}, difficulty = ${difficulty} WHERE id = ${id}`;
 
-  const [rows] = await pool.query(
-    "UPDATE workout SET name = ?, type = ?, description = ?, duration = ?, difficulty = ? WHERE id = ?",
-    [name, type, description, duration, difficulty, id]
-  ); //Hacemos la consulta a la base de datos
+    if (result.count === 0) {
+      // Si no se encuentra el workout
+      return res.status(404).send({ message: "Workout not found" });
+    }
 
-  if (rows.affectedRows === 0) {
-    //Si no se encuentra el workout
-    res.status(404).send({ message: "Workout not found" }); //Enviamos un mensaje de error
-    return; //Retornamos para que no se ejecute el codigo de abajo
+    res.send({ message: "Workout updated" });  // Enviamos la respuesta indicando que se actualizó
+  } catch (error) {
+    res.status(500).send({ message: error.message });  // Si hay un error, respondemos con un mensaje
   }
-
-  res.send({ message: "Workout updated" }); //Enviamos la respuesta
 };
 
 export const deleteWorkout = async (req, res) => {
-  //Funcion para eliminar un workout
-  const { id } = req.params; //Extraemos el id de los parametros
-  const [rows] = await pool.query("DELETE FROM workout WHERE id = ?", [id]); //Hacemos la consulta a la base de datos
+  // Función para eliminar un workout
+  const { id } = req.params; // Extraemos el id de los parámetros
 
-  if (rows.affectedRows === 0) {
-    //Si no se encuentra el workout
-    res.status(404).send({ message: "Workout not found" }); //Enviamos un mensaje de error
-    return; //Retornamos para que no se ejecute el codigo de abajo
+  try {
+    const result = await sql`DELETE FROM workout WHERE id = ${id}`;  // Hacemos la consulta para eliminar el workout
+
+    if (result.count === 0) {
+      // Si no se encuentra el workout
+      return res.status(404).send({ message: "Workout not found" });
+    }
+
+    res.send({ message: "Workout deleted" });  // Enviamos la respuesta indicando que se eliminó
+  } catch (error) {
+    res.status(500).send({ message: error.message });  // Si hay un error, respondemos con un mensaje
   }
-
-  res.send({ message: "Workout deleted" }); //Enviamos la respuesta
 };
