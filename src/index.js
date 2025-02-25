@@ -8,6 +8,11 @@ app.use(express.json());  // Para que express pueda entender los objetos JSON qu
 
 const PORT = process.env.PORT || 3000;  // Se define el puerto propio o el 3000 por defecto
 
+app.get('/', (req, res) => {
+  res.send('Bienvenido a la API de Workouts! Aquí puedes ver los workouts.');
+})
+
+
 const corsOptions = {
   origin: ['http://127.0.0.1:5500', 'http://localhost:3000/api/workouts', 'http://localhost:3000/api/workouts/:id'],  // Orígenes permitidos
   optionsSuccessStatus: 200,
