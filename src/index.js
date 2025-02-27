@@ -74,7 +74,7 @@ app.get('/', (req, res) => {
 
 
 const corsOptions = {
-  origin: ['http://127.0.0.1:5500', 'http://localhost:3000/api/workouts', 'http://localhost:3000/api/workouts/:id',' https://workouts-app-brown.vercel.app/api/workouts'],  // Orígenes permitidos
+  origin: ['http://127.0.0.1:5500', 'http://localhost:3000/api/workouts', 'http://localhost:3000/api/workouts/:id','https://workouts-app-brown.vercel.app'],  // Orígenes permitidos
   optionsSuccessStatus: 200,
 };
 
