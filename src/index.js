@@ -75,9 +75,18 @@ app.get('/', (req, res) => {
 
 
 const corsOptions = {
-  origin: ['http://127.0.0.1:5500', 'http://127.0.0.1:5501', 'http://localhost:3000/api/workouts', 'http://localhost:3000/api/workouts/:id','https://workouts-app-brown.vercel.app', 'http://localhost:5173', 'http://localhost:3000/api/users'],  // Orígenes permitidos
-  optionsSuccessStatus: 200,
+  origin: [
+    "http://127.0.0.1:5500",
+    "http://127.0.0.1:5501",
+    "http://localhost:3000", // 🔹 Permite todo el backend en localhost:3000
+    "https://workouts-app-brown.vercel.app",
+    "http://localhost:5173"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // 🔹 Asegura que los métodos sean permitidos
+  allowedHeaders: ["Content-Type", "Authorization"], // 🔹 Permite estos headers
+  optionsSuccessStatus: 200
 };
+
 
 app.use(cors(corsOptions));  // Usamos cors con las opciones definidas
 
