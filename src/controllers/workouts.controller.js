@@ -1,5 +1,8 @@
 import sql from "../db.js";  // Importamos la conexión a la base de datos
 
+
+
+// Definimos las funciones para los workouts 
 export const getAllWorkouts = async (req, res) => {
   // Función para obtener todos los workouts
   try {
@@ -90,3 +93,5 @@ export const deleteWorkout = async (req, res) => {
     res.status(500).send({ message: error.message });  // Si hay un error, respondemos con un mensaje
   }
 };
+
+

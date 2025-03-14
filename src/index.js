@@ -1,5 +1,6 @@
 import express from 'express';  // Importamos express (de esta manera podemos usar imports/exports en lugar de require)
 import workoutsRouter from './routes/workouts.routes.js';  // Importamos las rutas de workouts
+import usersRouter from './routes/users.routes.js';  // Importamos las rutas de users
 import cors from 'cors';  // Importamos cors para permitir peticiones de otros servidores
 
 const app = express();  // Creamos una instancia de express
@@ -74,15 +75,15 @@ app.get('/', (req, res) => {
 
 
 const corsOptions = {
-  origin: ['http://127.0.0.1:5500', 'http://127.0.0.1:5501', 'http://localhost:3000/api/workouts', 'http://localhost:3000/api/workouts/:id','https://workouts-app-brown.vercel.app', 'http://localhost:5173'],  // Orígenes permitidos
+  origin: ['http://127.0.0.1:5500', 'http://127.0.0.1:5501', 'http://localhost:3000/api/workouts', 'http://localhost:3000/api/workouts/:id','https://workouts-app-brown.vercel.app', 'http://localhost:5173', 'http://localhost:3000/api/users'],  // Orígenes permitidos
   optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));  // Usamos cors con las opciones definidas
 
 app.use(workoutsRouter);  // Usamos las rutas de workouts
+app.use(usersRouter);  // Usamos las rutas de users
 
-// Habilitar CORS para todas las solicitudes
 
 app.listen(PORT, () => {
   console.log(`Server running on port http://localhost:${PORT}`);  // Levantamos el servidor en el puerto definido
