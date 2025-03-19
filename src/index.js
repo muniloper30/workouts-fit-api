@@ -80,6 +80,7 @@ const corsOptions = {
     "http://127.0.0.1:5501",
     "http://localhost:3000", // 🔹 Permite todo el backend en localhost:3000
     "https://workouts-app-brown.vercel.app",
+    "https://workout-forge.vercel.app",
     "http://localhost:5173"
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // 🔹 Asegura que los métodos sean permitidos
